@@ -11,3 +11,8 @@ done
 
 cp $HOME/.bashrc .
 cp $HOME/.xinitrc .
+
+
+git add .
+git commit -m "update dots"
+git push origin main
