@@ -1,0 +1,39 @@
+import = [
+    "~/.config/alacritty/themes/gruvbox_dark.toml"
+]
+
+[cursor.style]
+shape = "Block"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+
+[[mouse.bindings]]
+chars = ""
+mouse = "Middle"
+
+[scrolling]
+history = 100000
+
+[window.padding]
+x = 8
+y = 5
+
+[window]
+dynamic_title = false

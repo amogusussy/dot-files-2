@@ -1,0 +1,17 @@
+{
+    "main-bg": "#1a1b26",
+    "main-fg": "#c0caf5",
+    "border": "#24283b",
+    "second-bg": "#161620",
+
+    "grey": "#565f89",
+    "purple": "#bb9af7",
+    "red": "#f7768e",
+    "orange": "#ff9e64",
+    "yellow": "#e0af68",
+    "green": "#9ece6a",
+    "blue": "#7aa2f7",
+    "turquoise": "#2ac3de",
+    "light-blue": "#73daca",
+    "accent": "#7aa2f7"
+}

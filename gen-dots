@@ -1,0 +1,13 @@
+#!/bin/bash
+
+config_files=("alacritty" "gallery-dl" "mpv" "nvim" "picom" "qtile" "ranger" "rofi" "yt-dlp" "zathura")
+
+
+for i in "${config_files[@]}"
+do
+  cp $HOME/.config/$i ./.config/ -r
+done
+
+
+cp $HOME/.bashrc .
+cp $HOME/.xinitrc .

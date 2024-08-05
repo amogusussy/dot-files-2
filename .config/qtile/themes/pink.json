@@ -1,0 +1,10 @@
+{
+    "bar_bg": "#ff94b1",
+    "bar_fg": "#ffffff",
+    "border": "#f9b4c6",
+    "workspace_norm": "#f9b4c6",
+    "workspace_active": "#ffffff",
+
+    "focused": "#f9b4c6",
+    "unfocused": "#212529"
+}
