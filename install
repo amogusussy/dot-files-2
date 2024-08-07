@@ -19,35 +19,22 @@ cp -r "Pictures/" "$HOME/Pictures"
 void_packages=(
   # System
   opendoas
-
   # Xorg
-  xorg-server libX11 xorg-input-drivers
-  nvidia
-
+  xorg-server libX11 xorg-input-drivers nvidia
   # Desktop
-  qtile alacritty mpv
-  picom feh ranger rofi
-  xset feh zathura
-  flatpak
-
+  qtile alacritty mpv picom feh ranger rofi xset feh zathura flatpak
   # dbus
-  dbus dbus-devel dbus-glib
-  dbus-x11
-
+  dbus dbus-devel dbus-glib dbus-x11
   # Audio
   pipewire wireplumber
-
   # Scraping
-  gallery-dl yt-dlp
-  python3-BeautifulSoup4 python3-requests
-
+  gallery-dl yt-dlp python3-BeautifulSoup4 python3-requests
   # neovim
   neovim python3-lsp-server
 )
 
 sudo xbps-install -Syu
 sudo xbps-install -Sy ${void_packages[@]}
-
 
 
 flatpak_apps=(
