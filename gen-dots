@@ -12,6 +12,7 @@ done
 cp $HOME/.bashrc .
 cp $HOME/.xinitrc .
 
+cp -r $HOME/Pictures/Wallpapers/* ./Pictures/Wallpapers/
 
 git add .
 git commit -m "update dots"

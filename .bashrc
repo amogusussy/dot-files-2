@@ -1,8 +1,8 @@
 export PATH=$PATH:~/.local/bin
 
-# if [[ $- != *i* ]]; then
-#   return # If not running interactively, don't do anything
-# fi
+if [[ $- != *i* ]]; then
+  return # If not running interactively, don't do anything
+fi
 
 # Run startx when in tty
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -16,7 +16,8 @@ fi
 
 # General aliases
 PS1="$(date +%I:%M) \W $ "
-alias ls='ls --color=auto --file-type'
+alias ls="lsd"
+# alias ls='ls --color=auto --file-type'
 alias q='exit'
 alias ':q'='exit'
 alias ':q!'='exit'
@@ -149,7 +150,19 @@ paste-file() {
 backup() {
   excludes=$(printf " --exclude=\"%s\"" $(ls ~/.var/app/ -1 | /bin/grep -Pv "librewolf"))
 
-  echo $excludes $videos | xargs rsync -av . /mnt/SteamDrive/Backups/2024-08-01-Backup/ --exclude=.games/ --exclude=Torrents --exclude=.local/share/flatpak/ --exclude=.cache/ --exclude=~/.var/app/com.valvesoftware.Steam/.local/ --exclude=$HOME/.var/app/com.github.Eloston.UngoogledChromium/ --exclude="*.webm" --exclude=Youtube/
+  echo $excludes $videos | xargs rsync -av . /mnt/SteamDrive/Backups/2024-08-01-Backup/ \
+    --exclude=.games/ \
+    --exclude=Torrents \
+    --exclude=.local/share/flatpak/ \
+    --exclude=.cache/ \
+    --exclude=~/.var/app/com.valvesoftware.Steam/.local/ \
+    --exclude=$HOME/.var/app/com.github.Eloston.UngoogledChromium/ \
+    --exclude=Youtube/ \
+    --exclude="*.webm" \
+    --exclude="pyc" \
+    --exclude="__pycache__" \
+    --exclude=".cargo" \
+    --exclude="pyc"
 }
 
 chadwm() {
