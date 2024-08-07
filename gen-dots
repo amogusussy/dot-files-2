@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -d ".git/" ]; then
+  printf "Not in dot-files root dir"
+  exit 1
+fi
+
 config_files=("alacritty" "gallery-dl" "mpv" "nvim" "picom" "qtile" "ranger" "rofi" "yt-dlp" "zathura")
 
 
