@@ -1,0 +1,65 @@
+#!/bin/bash
+
+
+## Copy all relevant files
+if [ ! -d "$HOME/.config/" ]; then
+  mkdir -p "$HOME/.config/"
+fi
+cp -r ./.config/* "$HOME/.config/"
+
+if [ ! -d "$HOME/.local/bin" ]; then
+  mkdir -p "$HOME/.local/bin/"
+fi
+cp -r ./.local/bin/* "$HOME/.local/bin/"
+
+cp -r "Pictures/" "$HOME/Pictures"
+
+
+## Install all packages
+void_packages=(
+  # System
+  opendoas
+
+  # Xorg
+  xorg-server libX11 xorg-input-drivers
+  nvidia
+
+  # Desktop
+  qtile alacritty mpv
+  picom feh ranger rofi
+  xset feh zathura
+  flatpak
+
+  # dbus
+  dbus dbus-devel dbus-glib
+  dbus-x11
+
+  # Audio
+  pipewire wireplumber
+
+  # Scraping
+  gallery-dl yt-dlp
+  python3-BeautifulSoup4 python3-requests
+
+  # neovim
+  neovim python3-lsp-server
+)
+
+sudo xbps-install -Syu
+sudo xbps-install -Sy ${void_packages[@]}
+
+
+
+flatpak_apps=(
+  "com.brave.Browser"
+  "io.gitlab.librewolf-community"
+  "org.qbittorrent.qBittorrent"
+  "org.nicotine_plus.Nicotine"
+  "org.kde.elisa"
+  "com.github.tchx84.Flatseal"
+)
+
+for i in ${flatpak_apps[@]}
+do
+  flatpak install --user -y $i
+done
