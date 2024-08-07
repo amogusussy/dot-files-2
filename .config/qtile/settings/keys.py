@@ -7,7 +7,9 @@ with open(f"{home_dir}/.config/qtile/theme_name.txt", "r") as file:
     theme = file.read().strip()
 
 
-alacritty_bin = f"alacritty --config-file {home_dir}/.config/alacritty/{theme}.toml"
+alacritty_bin = (
+        f"alacritty --config-file {home_dir}/.config/alacritty/{theme}.toml"
+)
 rofi_bin = f"rofi -show drun -theme-str '@theme \"{theme}\"'"
 
 keys = [
