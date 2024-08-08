@@ -94,7 +94,7 @@ source /usr/share/bash-completion/completions/git
 shred_dir() {
   for i in "$@"
   do
-    fd -t f -0 --absolute-path --base-directory "$i"| xargs -0 /bin/shred -zn 1
+    fd -t f -0 --absolute-path --base-directory "$i" | xargs -0 /bin/shred -zn 1
   done;
 }
 
@@ -138,7 +138,7 @@ update() {
   flatpak update -y
 }
 
-rmnvswap() {
+rmnvswap() 
   file="$(printf "$(pwd)/$1\n" | sed -e "s/\//%/g").swp"
   rm -f "$HOME/.local/state/nvim/swap/$file"
 }
@@ -150,7 +150,7 @@ paste-file() {
 backup() {
   excludes=$(printf " --exclude=\"%s\"" $(ls ~/.var/app/ -1 | /bin/grep -Pv "librewolf"))
 
-  echo $excludes $videos | xargs rsync -av . /mnt/SteamDrive/Backups/2024-08-01-Backup/ \
+  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2024-08-01-Backup/ \
     --exclude=.games/ \
     --exclude=Torrents \
     --exclude=.local/share/flatpak/ \

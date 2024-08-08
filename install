@@ -18,19 +18,23 @@ cp -r "Pictures/" "$HOME/Pictures"
 ## Install all packages
 void_packages=(
   # System
-  opendoas
+  opendoas curl
   # Xorg
-  xorg-server libX11 xorg-input-drivers nvidia
+  xorg-server libX11 xorg-input-drivers nvidia xinit
   # Desktop
-  qtile alacritty mpv picom feh ranger rofi xset feh zathura flatpak
+  qtile alacritty mpv ffmpeg picom feh ranger rofi xset feh zathura flatpak
+  scrot
   # dbus
   dbus dbus-devel dbus-glib dbus-x11
   # Audio
   pipewire wireplumber
   # Scraping
-  gallery-dl yt-dlp python3-BeautifulSoup4 python3-requests
-  # neovim
+  gallery-dl yt-dlp python3-BeautifulSoup4 python3-requests python3-pip
+  python3-pipx
+  # Neovim
   neovim python3-lsp-server
+  # Other
+  lsd rsync
 )
 
 sudo xbps-install -Syu
