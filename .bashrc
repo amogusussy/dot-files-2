@@ -138,10 +138,10 @@ update() {
   flatpak update -y
 }
 
-rmnvswap() 
-  file="$(printf "$(pwd)/$1\n" | sed -e "s/\//%/g").swp"
-  rm -f "$HOME/.local/state/nvim/swap/$file"
-}
+# rmnvswap() 
+#   file="$(printf "$(pwd)/$1\n" | sed -e "s/\//%/g").swp"
+#   rm -f "$HOME/.local/state/nvim/swap/$file"
+# }
 
 paste-file() {
   curl -F "file=@$1" https://0x0.st

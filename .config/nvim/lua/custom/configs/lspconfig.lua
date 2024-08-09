@@ -15,14 +15,6 @@ for _, lsp in ipairs(servers) do
 end
 
 
-lspconfig.pylsp.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    filetypes = { 'py' },
-  }
-}
-
 lspconfig.pylint = {
   default_config = {
     cmd = { 'pylint' },
@@ -30,13 +22,35 @@ lspconfig.pylint = {
     filetypes = { 'py' },
     init_options = {
       command = { 'pylint', 'run', '--output-format', 'json',  },
+      ignore={ "E501" },
     },
   },
 }
---
---
--- lspconfig.ast_grep.setup{
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = {"c"},
--- }
+
+
+lspconfig.pylsp.setup {
+  on_attach=on_attach,
+  filetypes = {'python'},
+  settings = {
+  configurationSources = {"flake8"},
+  formatCommand = {"black"},
+  pylsp = {
+    plugins = {
+      jedi_completion = {
+        include_params = true,
+      },
+      jedi_signature_help = {enabled = true},
+      jedi = {
+        extra_paths = {'~/projects/work_odoo/odoo14', '~/projects/work_odoo/odoo14'},
+      },
+      pyflakes={enabled=true},
+      pylsp_mypy={enabled=false},
+      pycodestyle={
+        enabled=true,
+        ignore={'E501', 'E231'},
+        maxLineLength=120},
+        yapf={enabled=true}
+      }
+    }
+  }
+}

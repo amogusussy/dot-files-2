@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ## Copy all relevant files
 if [ ! -d "$HOME/.config/" ]; then
   mkdir -p "$HOME/.config/"
@@ -38,12 +37,16 @@ void_packages=(
 )
 
 sudo xbps-install -Syu
+sudo xbps-install -y void-repo-multilib void-repo-multilib-nonfree void-repo-nonfree
+sudo xbps-install -S
 sudo xbps-install -Sy ${void_packages[@]}
+
+echo "permit :wheel" 
 
 
 flatpak_apps=(
-  "com.brave.Browser"
   "io.gitlab.librewolf-community"
+  "com.brave.Browser"
   "org.qbittorrent.qBittorrent"
   "org.nicotine_plus.Nicotine"
   "org.kde.elisa"
