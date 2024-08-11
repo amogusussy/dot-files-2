@@ -41,7 +41,7 @@ sudo xbps-install -y void-repo-multilib void-repo-multilib-nonfree void-repo-non
 sudo xbps-install -S
 sudo xbps-install -Sy ${void_packages[@]}
 
-echo "permit :wheel" 
+sudo echo "permit :wheel" > /etc/doas.conf
 
 
 flatpak_apps=(
