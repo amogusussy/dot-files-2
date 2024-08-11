@@ -12,6 +12,8 @@ fi
 cp -r ./.local/bin/* "$HOME/.local/bin/"
 
 cp -r "Pictures/" "$HOME/Pictures"
+cp .bashrc $HOME/
+cp .xinitrc $HOME/
 
 
 ## Install all packages
