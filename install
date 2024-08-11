@@ -43,8 +43,10 @@ sudo xbps-install -y void-repo-multilib void-repo-multilib-nonfree void-repo-non
 sudo xbps-install -S
 sudo xbps-install -Sy ${void_packages[@]}
 
-sudo echo "permit :wheel" > /etc/doas.conf
+sudo touch /etc/doas.conf
+sudo echo "permit :wheel" | tee -a /etc/doas.conf
 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
 flatpak_apps=(
   "io.gitlab.librewolf-community"
