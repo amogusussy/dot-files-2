@@ -55,6 +55,8 @@ flatpak_apps=(
   "com.github.tchx84.Flatseal"
 )
 
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 for i in ${flatpak_apps[@]}
 do
   flatpak install --user -y $i
