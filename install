@@ -1,12 +1,10 @@
 #!/bin/bash
 
 
-read -p "Do you want to install these dot-files? (y/n) " yn
-if [[ "$yn" != "y" ]]; then
+read -p "Type yes in capitals to install the dot-files: " yes
+if [[ "$yes" != "YES" ]]; then
   exit
 fi
-
-read
 
 ## Copy all relevant files
 if [ ! -d "$HOME/.config/" ]; then
@@ -43,7 +41,7 @@ void_packages=(
   # Neovim
   neovim python3-lsp-server
   # Other
-  lsd rsync xdg-dbus-proxy
+  lsd rsync elogind rtkit polkit
 )
 
 sudo xbps-install -Syu
@@ -51,9 +49,27 @@ sudo xbps-install -y void-repo-multilib void-repo-multilib-nonfree void-repo-non
 sudo xbps-install -S
 sudo xbps-install -Sy ${void_packages[@]}
 
-sudo touch /etc/doas.conf
-sudo echo "permit :wheel" | tee -a /etc/doas.conf
+echo "permit :wheel" | sudo tee -a /etc/doas.conf
 
+services=(
+  "dbus"
+  "elogind"
+  "polkitd"
+  "rtkit"
+)
+
+for service in ${services}; do
+  if [[ ! -L /var/service/$service/ ]]; then
+    sudo ln -s /etc/sv/$service/ /var/service/
+  fi
+done
+
+sudo ln -s /etc/sv/dbus/ /var/service/
+sudo ln -s /etc/sv/elogind/ /var/service/
+sudo ln -s /etc/sv/polkitd/ /var/service/
+sudo ln -s /etc/sv/rtkit/ /var/service/
+
+# install Jetbrains
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
 flatpak_apps=(
@@ -67,7 +83,6 @@ flatpak_apps=(
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-for i in ${flatpak_apps[@]}
-do
-  flatpak install --user -y $i
+for app in ${flatpak_apps[@]}; do
+  flatpak install --user -y $app
 done
