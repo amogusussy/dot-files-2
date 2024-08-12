@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+read -p "Do you want to install these dot-files? (y/n) " yn
+if [[ "$yn" != "y" ]]; then
+  exit
+fi
+
+read
+
 ## Copy all relevant files
 if [ ! -d "$HOME/.config/" ]; then
   mkdir -p "$HOME/.config/"
