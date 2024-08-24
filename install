@@ -29,8 +29,8 @@ void_packages=(
   # Xorg
   xorg-server libX11 xorg-input-drivers nvidia xinit
   # Desktop
-  qtile alacritty mpv ffmpeg picom feh ranger rofi xset feh zathura flatpak
-  scrot xdg-desktop-portal xdg-desktop-portal-gtk python3-psutil
+  qtile alacritty mpv ffmpeg picom feh ranger rofi xset feh zathura zathura-pdf-mupdf
+  flatpak scrot xdg-desktop-portal xdg-desktop-portal-gtk python3-psutil
   # dbus
   dbus dbus-devel dbus-glib dbus-x11 xdg-dbus-proxy dbus-glib dbus-x11
   # Audio
