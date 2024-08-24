@@ -153,7 +153,6 @@ backup() {
   echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2024-08-01-Backup/ \
     --exclude=.games/ \
     --exclude=Torrents \
-    --exclude=.local/share/flatpak/ \
     --exclude=.cache/ \
     --exclude=~/.var/app/com.valvesoftware.Steam/.local/ \
     --exclude=$HOME/.var/app/com.github.Eloston.UngoogledChromium/ \

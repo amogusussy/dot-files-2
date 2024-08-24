@@ -30,18 +30,18 @@ void_packages=(
   xorg-server libX11 xorg-input-drivers nvidia xinit
   # Desktop
   qtile alacritty mpv ffmpeg picom feh ranger rofi xset feh zathura flatpak
-  scrot xdg-desktop-portal xdg-desktop-portal-gtk
+  scrot xdg-desktop-portal xdg-desktop-portal-gtk python3-psutil
   # dbus
   dbus dbus-devel dbus-glib dbus-x11 xdg-dbus-proxy dbus-glib dbus-x11
   # Audio
-  pipewire wireplumber
+  pipewire wireplumber pulseaudio
   # Scraping
   gallery-dl yt-dlp python3-BeautifulSoup4 python3-requests python3-pip
-  python3-pipx
+  python3-pipx python3-lxml
   # Neovim
   neovim python3-lsp-server
   # Other
-  lsd rsync elogind rtkit polkit
+  lsd rsync elogind rtkit polkit pnpm xauth
 )
 
 sudo xbps-install -Syu
@@ -71,18 +71,3 @@ sudo ln -s /etc/sv/rtkit/ /var/service/
 
 # install Jetbrains
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
-
-flatpak_apps=(
-  "io.gitlab.librewolf-community"
-  "com.brave.Browser"
-  "org.qbittorrent.qBittorrent"
-  "org.nicotine_plus.Nicotine"
-  "org.kde.elisa"
-  "com.github.tchx84.Flatseal"
-)
-
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-for app in ${flatpak_apps[@]}; do
-  flatpak install --user -y $app
-done
