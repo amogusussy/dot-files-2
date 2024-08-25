@@ -1,7 +1,8 @@
 #!/bin/bash
 
 
-read -p "Type yes in capitals to install the dot-files: " yes
+printf "\033[0;31mThis will likely break your current config\033[0m"
+read -p "Type yes in capitals to accept: " yes
 if [[ "$yes" != "YES" ]]; then
   exit
 fi
