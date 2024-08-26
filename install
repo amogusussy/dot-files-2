@@ -26,7 +26,7 @@ cp .xinitrc $HOME/
 ## Install all packages
 void_packages=(
   # System
-  opendoas curl unzip
+  opendoas curl unzip bash-completion
   # Xorg
   xorg-server libX11 xorg-input-drivers nvidia xinit
   # Desktop
@@ -35,7 +35,7 @@ void_packages=(
   # dbus
   dbus dbus-devel dbus-glib dbus-x11 xdg-dbus-proxy dbus-glib dbus-x11
   # Audio
-  pipewire wireplumber pulseaudio
+  pipewire wireplumber pulseaudio playerctl
   # Scraping
   gallery-dl yt-dlp python3-BeautifulSoup4 python3-requests python3-pip
   python3-pipx python3-lxml
