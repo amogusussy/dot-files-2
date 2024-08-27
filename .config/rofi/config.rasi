@@ -20,7 +20,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 450px;
+    height: 460px;
     width: 700px;
     border: 3px;
     border-color: @border-col;
