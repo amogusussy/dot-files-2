@@ -26,7 +26,7 @@ cp .xinitrc $HOME/
 ## Install all packages
 void_packages=(
   # System
-  opendoas curl unzip bash-completion
+  opendoas curl unzip bash-completion python3-virtualenv
   # Xorg
   xorg-server libX11 xorg-input-drivers nvidia xinit
   # Desktop

@@ -41,8 +41,6 @@ alias avim="NVIM_APPNAME=astrovim nvim"
 # Kill Commands
 ks() {
   kill $(pgrep -f "^[CZ]:|steam|steamwebhelper")
-  sleep 2
-  kill $(pgrep -f "^[CZ]:|steam|steamwebhelper")
 }
 alias kq='pkill qbittorrent'
 alias ke='pkill electron'
