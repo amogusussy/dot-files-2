@@ -38,7 +38,7 @@ screens = [Screen(
             ),
             widget.Spacer(),
             widget.Clock(
-                format="󱑆 %H:%M |   %G %e %b",
+                format="󱑆 %H:%M |  %G %e %b",
             ),
             widget.Spacer(),
             widget.CPU(format="{load_percent}%"),

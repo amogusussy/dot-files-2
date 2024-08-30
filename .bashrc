@@ -17,7 +17,6 @@ fi
 # General aliases
 PS1="$(date +%I:%M) \W $ "
 alias ls="lsd"
-# alias ls='ls --color=auto --file-type'
 alias q='exit'
 alias ':q'='exit'
 alias ':q!'='exit'
@@ -92,8 +91,8 @@ source /usr/share/bash-completion/completions/git
 shred_dir() {
   for i in "$@"
   do
-    fd -t f -0 --absolute-path --base-directory "$i" | xargs -0 /bin/shred -zn 1
-  done;
+    fd -t f -0a --base-directory "$i" | xargs -0 /bin/shred -zn 1
+  done
 }
 
 reverse-output() {
@@ -112,7 +111,7 @@ reverse-output() {
 
 make_virt_env() {
   virtualenv -p python3 env
-  source env/bin/activate
+  source ./env/bin/activate
   pip3 install --upgrade pip
   if [ -f "requirements.txt" ]; then
     pip install -r requirements.txt
@@ -124,22 +123,28 @@ stream() {
 }
 
 up() {
-    cd $(printf "%.s../" $(seq "$1"));
+  cd $(printf "%.s../" $(seq "$1"))
 }
 
 clear() {
-  printf '\E[H\E[J';
+  printf '\E[H\E[J'
 }
 
 update() {
-  doas xbps-install -Syu &&
+  distro=$(lsb_release -cs)
+  if [[ $distro == "void" ]]; then
+    doas xbps-install -Syu
+  elif [[ $distro == "arch" ]]; then
+    doas pacman -Syu
+  fi
+
   flatpak update -y
 }
 
-# rmnvswap() 
-#   file="$(printf "$(pwd)/$1\n" | sed -e "s/\//%/g").swp"
-#   rm -f "$HOME/.local/state/nvim/swap/$file"
-# }
+rmnvswap() {
+  file="$(printf "$(pwd)/$1\n" | sed -e "s/\//%/g").swp"
+  rm -f "$HOME/.local/state/nvim/swap/$file"
+}
 
 paste-file() {
   curl -F "file=@$1" https://0x0.st
@@ -160,11 +165,6 @@ backup() {
     --exclude="__pycache__" \
     --exclude=".cargo" \
     --exclude="pyc"
-}
-
-chadwm() {
-  cd ~/.config/chadwm/chadwm/
-  nvim ./config.h +NvimTreeToggle
 }
 
 trash_rm () {
