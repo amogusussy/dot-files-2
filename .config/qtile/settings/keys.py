@@ -1,16 +1,11 @@
 from libqtile.config import EzKey as Key
 from libqtile.lazy import lazy
-import os
+from themename import THEME
+from os.path import expanduser
 
-home_dir = os.path.expanduser('~')
-with open(f"{home_dir}/.config/qtile/theme_name.txt", "r") as file:
-    theme = file.read().strip()
-
-
-alacritty_bin = (
-        f"alacritty --config-file {home_dir}/.config/alacritty/{theme}.toml"
-)
-rofi_bin = f"rofi -show drun -theme-str '@theme \"{theme}\"'"
+home = expanduser('~')
+alacritty_bin = f"alacritty --config-file {home}/.config/alacritty/{THEME}.toml"
+rofi_bin = f"rofi -show drun -theme-str '@theme \"{THEME}\"'"
 
 keys = [
     # Focus windows. Cycle through both tiling and floating windows.

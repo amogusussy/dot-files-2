@@ -2,35 +2,33 @@ from libqtile import layout, hook, bar, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from settings.keys import keys
-import groupbox_2
+from groupbox_2 import GroupBox2
 import subprocess
 import os
 import json
 import random
+from themename import THEME
 
 
 home_dir = os.path.expanduser('~')
-with open(f"{home_dir}/.config/qtile/theme_name.txt", "r") as file:
-    theme = file.read().strip()
 
-with open(f"{home_dir}/.config/qtile/themes/{theme}.json", "r") as f:
-    colors = json.loads(f.read())
+with open(f"{home_dir}/.config/qtile/themes/{THEME}.json", "r") as f:
+    colors = json.load(f)
 
-wall_dir = f"{home_dir}/Pictures/Wallpapers/{theme}/"
+wall_dir = f"{home_dir}/Pictures/Wallpapers/{THEME}/"
 wallpaper = wall_dir + random.choice(os.listdir(wall_dir))
 
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
 
+BAR_PAD = widget.TextBox(fmt="")
 screens = [Screen(
     wallpaper=wallpaper,
     wallpaper_mode='stretch',
     top=bar.Bar(
         [
-            widget.TextBox(
-                fmt=""
-            ),
-            groupbox_2.GroupBox2(
+            BAR_PAD,
+            GroupBox2(
                 disable_drag=True,
                 normal_style={"text_color": colors['workspace_norm']},
                 has_windows_style={"text_color": colors['workspace_active']},
@@ -43,9 +41,7 @@ screens = [Screen(
             widget.Spacer(),
             widget.CPU(format="{load_percent}%"),
             widget.Memory(format="{MemUsed:.01f} GB", measure_mem="G"),
-            widget.TextBox(
-                fmt=""
-            ),
+            BAR_PAD,
         ],
         28,
         border_color=colors['border'],
@@ -66,7 +62,7 @@ def autostart_once():
 
 mod = "mod4"
 
-groups = [Group(i) for i in "123456"]
+groups = [Group(str(i)) for i in range(1, 7)]
 for i in groups:
     keys.extend([
         Key([mod], i.name, lazy.group[i.name].toscreen()),

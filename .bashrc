@@ -38,9 +38,7 @@ alias avim="NVIM_APPNAME=astrovim nvim"
 
 
 # Kill Commands
-ks() {
-  kill $(pgrep -f "^[CZ]:|steam|steamwebhelper")
-}
+alias ks='pkill -f "^[CZ]:|steam|steamwebhelper"'
 alias kq='pkill qbittorrent'
 alias ke='pkill electron'
 alias kf='pkill firefox'
@@ -213,9 +211,8 @@ printf "\e]0;haxxor terminal"
 export EDITOR='nvim'
 
 # History
-# No HISTSIZE means no limit.
-export HISTSIZE= 
-export HISTFILESIZE=
+export HISTSIZE=1000000000
+export HISTFILESIZE=1000000000
 export HISTTIMEFORMAT='%d/%m/%y %T '
 export HISTCONTROL=ignoredups
 export HISTIGNORE=' *:q:qq:clear:clea:shred:ckear:#:ks:kl:kq:m:history'
