@@ -3,23 +3,27 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from settings.keys import keys
 from groupbox_2 import GroupBox2
+from themename import THEME
 import subprocess
 import os
-import json
 import random
-from themename import THEME
-
-
-home_dir = os.path.expanduser('~')
-
-with open(f"{home_dir}/.config/qtile/themes/{THEME}.json", "r") as f:
-    colors = json.load(f)
-
-wall_dir = f"{home_dir}/Pictures/Wallpapers/{THEME}/"
-wallpaper = wall_dir + random.choice(os.listdir(wall_dir))
 
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
+DESKTOPS = 6
+
+home_dir = os.path.expanduser('~')
+
+with open(f"{home_dir}/.config/qtile/themes/{THEME}.theme", "r") as f:
+    colors = {}
+    for line in f.read().split("\n"):
+        line = line.strip().replace(" ", "")
+        if ":" not in line or line.startswith("#"): continue
+        splitted = line.split(":")
+        colors[splitted[0]] = splitted[1]
+
+wall_dir = f"{home_dir}/Pictures/Wallpapers/{THEME}/"
+wallpaper = wall_dir + random.choice(os.listdir(wall_dir))
 
 BAR_PAD = widget.TextBox(fmt="")
 screens = [Screen(
@@ -29,14 +33,14 @@ screens = [Screen(
         [
             BAR_PAD,
             GroupBox2(
-                disable_drag=True,
                 normal_style={"text_color": colors['workspace_norm']},
                 has_windows_style={"text_color": colors['workspace_active']},
                 active_any_screen_style={"line": 1},
+                disable_drag=True,
             ),
             widget.Spacer(),
             widget.Clock(
-                format="󱑆 %H:%M |  %G %e %b",
+                format=f"󱑆 %H:%M |  %G %-e %b",
             ),
             widget.Spacer(),
             widget.CPU(format="{load_percent}%"),
@@ -53,16 +57,14 @@ screens = [Screen(
     )
 )]
 
-
-@hook.subscribe.startup_once
-def autostart_once():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.Popen([home])
-
+# Run ~/.config/qtile/autostart.sh on startup
+hook.subscribe.startup_once(lambda: subprocess.run(
+    home_dir +  "/.config/qtile/autostart.sh"
+))
 
 mod = "mod4"
 
-groups = [Group(str(i)) for i in range(1, 7)]
+groups = [Group(str(i)) for i in range(1, DESKTOPS + 1)]
 for i in groups:
     keys.extend([
         Key([mod], i.name, lazy.group[i.name].toscreen()),

@@ -30,7 +30,7 @@ keys = [
     Key("M-f", lazy.window.toggle_fullscreen(), desc="Enter fullscreen"),
     Key("M-S-<space>", lazy.window.toggle_floating(), desc="Toggle floating window"),
     Key("M-C-r", lazy.reload_config(), desc="Reload config"),
-    Key("M-C-k", lazy.spawn("pkill librewolf"), desc="Close all librewolf instances"),
+    Key("M-C-l", lazy.spawn("pkill librewolf"), desc="Close all librewolf instances"),
 
     # Hide bar
     Key("M-b", lazy.hide_show_bar("top"), desc="Toggle bar"),

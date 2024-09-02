@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 printf "\033[0;31mThis will likely break your current config\033[0m"
 read -p "Type yes in capitals to accept: " yes
 if [[ "$yes" != "YES" ]]; then
@@ -70,5 +68,5 @@ sudo ln -s /etc/sv/elogind/ /var/service/
 sudo ln -s /etc/sv/polkitd/ /var/service/
 sudo ln -s /etc/sv/rtkit/ /var/service/
 
-# install Jetbrains
+# install Jetbrains Mono
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"

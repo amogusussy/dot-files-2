@@ -1,0 +1,7 @@
+bar_bg: #1a1b26
+bar_fg: #c0caf5
+border: #7aa2f7
+workspace_norm: #565f89
+workspace_active: #9ece6a
+focused: #7aa2f7
+unfocused: #565f89
