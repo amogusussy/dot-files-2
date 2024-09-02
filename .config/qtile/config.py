@@ -49,7 +49,7 @@ screens = [Screen(
         ],
         28,
         border_color=colors['border'],
-        border_width=[0] * 4,
+        border_width=[0, 0, 0, 0],
 
         background=colors['bar_bg'],
         foreground=colors['bar_fg'],
