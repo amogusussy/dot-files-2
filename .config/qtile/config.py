@@ -85,7 +85,7 @@ layouts = [layout.Columns(
 )]
 
 widget_defaults = dict(
-    font="monospace",
+    font="monospace sans-serif",
     fontsize=12,
     padding=3,
     foreground=colors['bar_fg']

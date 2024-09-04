@@ -51,7 +51,9 @@ local options = {
 
   window = {
     completion = cmp.config.window.bordered({
-        winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+      winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None',
+      border = "rounded",
+      scrollbar = false,
     }),
     -- completion =
     --   {
@@ -59,11 +61,12 @@ local options = {
     --   winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
     --   scrollbar = false,
     -- },
-    documentation = cmp.config.window.bordered(),
-    -- documentation = {
-    --   border = border "CmpDocBorder",
-    --   winhighlight = "Normal:CmpDoc",
-    -- },
+    -- documentation = cmp.config.window.bordered(),
+    documentation = {
+      border = border "CmpDocBorder",
+      winhighlight = "Normal:CmpDoc",
+      scrollbar = false,
+    },
   },
   snippet = {
     expand = function(args)
