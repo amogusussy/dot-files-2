@@ -1,11 +1,10 @@
 from libqtile.config import EzKey as Key
+from libqtile.config import Click, Drag
 from libqtile.lazy import lazy
-from themename import THEME
-from os.path import expanduser
+import global_variables as G
 
-home = expanduser('~')
-alacritty_bin = f"alacritty --config-file {home}/.config/alacritty/{THEME}.toml"
-rofi_bin = f"rofi -show drun -theme-str '@theme \"{THEME}\"'"
+alacritty_bin = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
+rofi_bin = f"rofi -show drun -theme-str '@theme \"{G.THEME_NAME}\"'"
 
 keys = [
     # Focus windows. Cycle through both tiling and floating windows.
@@ -45,4 +44,14 @@ keys = [
     Key("<XF86AudioPlay>", lazy.spawn("audio play-pause"), desc="Toggle audio stream (play/pause)"),
     Key("<XF86AudioNext>", lazy.spawn("audio next"), desc="Next in playlist"),
     Key("<XF86AudioPrev>", lazy.spawn("audio prev"), desc="Last in playlist"),
+]
+
+# Drag floating layouts.
+mouse = [
+    Drag([G.MOD], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([G.MOD], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
+    Click([G.MOD], "Button2",
+          lazy.window.bring_to_front()),
 ]
