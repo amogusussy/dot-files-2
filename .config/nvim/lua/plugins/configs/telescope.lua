@@ -9,6 +9,8 @@ local options = {
       "--line-number",
       "--column",
       "--smart-case",
+      "--hidden",
+      "--no-ignore-vcs",
     },
     prompt_prefix = " > ",
     selection_caret = "  ",
@@ -51,6 +53,11 @@ local options = {
       n = {
         ["q"] = require("telescope.actions").close,
       },
+      i = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+        ["<esc>"] = require("telescope.actions").close,
+      }
     },
   },
 

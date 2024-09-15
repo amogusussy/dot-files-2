@@ -38,7 +38,7 @@ alias avim="NVIM_APPNAME=astrovim nvim"
 
 
 # Kill Commands
-alias ks='pkill -f "^[CZ]:|steam|steamwebhelper"'
+alias ks='pkill -f "^[CZ]:|steam|steamwebhelper|bwrap steam"'
 alias kq='pkill qbittorrent'
 alias ke='pkill electron'
 alias kf='pkill firefox'

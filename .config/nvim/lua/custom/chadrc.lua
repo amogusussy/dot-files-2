@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"

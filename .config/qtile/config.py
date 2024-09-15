@@ -12,9 +12,9 @@ MARGIN_DEFAULT = 4
 DESKTOPS = 6
 COLORS = theme.Theme()
 
-BAR_PAD = widget.TextBox(fmt="")
+BAR_PAD = widget.TextBox()
 screens = [Screen(
-    wallpaper=COLORS.get_wallpaper(),
+    wallpaper=COLORS.wallpaper_file,
     wallpaper_mode='stretch',
     top=bar.Bar(
         [
@@ -26,7 +26,7 @@ screens = [Screen(
                 disable_drag=True,
             ),
             widget.Spacer(),
-            widget.Clock(format=f"󱑆 %H:%M:%S |  %G %-e %b"),
+            widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
             widget.Spacer(),
             widget.CPU(format="{load_percent}%"),
             widget.Memory(format="{MemUsed:.01f} GB", measure_mem="G"),
