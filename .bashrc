@@ -163,7 +163,8 @@ backup() {
     --exclude="__pycache__" \
     --exclude=".cargo" \
     --exclude="pyc" \
-    --exclude="$HOME/.local/share/flatpak/repo/"
+    --exclude="$HOME/.local/share/flatpak" \
+    --exclude="tor-browser"
 }
 
 trash_rm () {

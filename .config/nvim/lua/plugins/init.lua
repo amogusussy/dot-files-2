@@ -14,18 +14,19 @@ local default_plugins = {
   "nvim-lua/plenary.nvim",
 
   {
-    "NvChad/base46",
-    branch = "v2.0",
-    build = function()
-      require("base46").load_all_highlights()
-    end,
+   "NvChad/base46",
+   branch = "v2.0",
+   build = function()
+     require("base46").load_all_highlights()
+   end,
   },
 
   {
-    "NvChad/ui",
-    branch = "v2.0",
-    lazy = false,
+   "NvChad/ui",
+   branch = "v2.0",
+   lazy = false,
   },
+
 
   {
     "NvChad/nvterm",
@@ -263,35 +264,19 @@ local default_plugins = {
     end,
   },
 
-  -- Only load whichkey after all the gui
-  {
-    "folke/which-key.nvim",
-    keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
-    init = function()
-      require("core.utils").load_mappings "whichkey"
-    end,
-    cmd = "WhichKey",
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "whichkey")
-      require("which-key").setup(opts)
-    end,
-  },
-
+  -- -- Only load whichkey after all the gui
   -- {
-  --   "OXY2DEV/markview.nvim",
-  --   lazy = false,      -- Recommended
-  --   -- ft = "markdown" -- If you decide to lazy-load anyway
-  --
-  --   dependencies = {
-  --       -- You will not need this if you installed the
-  --       -- parsers manually
-  --       -- Or if the parsers are in your $RUNTIMEPATH
-  --       "nvim-treesitter/nvim-treesitter",
-  --
-  --       "nvim-tree/nvim-web-devicons"
-  --   }
-  -- }
-
+  --   "folke/which-key.nvim",
+  --   keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+  --   init = function()
+  --     require("core.utils").load_mappings "whichkey"
+  --   end,
+  --   cmd = "WhichKey",
+  --   config = function(_, opts)
+  --     dofile(vim.g.base46_cache .. "whichkey")
+  --     require("which-key").setup(opts)
+  --   end,
+  -- },
 }
 
 local config = require("core.utils").load_config()

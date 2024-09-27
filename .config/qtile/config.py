@@ -10,6 +10,7 @@ import theme
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
 DESKTOPS = 6
+BAR_SIZE = 24
 COLORS = theme.Theme()
 
 BAR_PAD = widget.TextBox()
@@ -32,7 +33,7 @@ screens = [Screen(
             widget.Memory(format="{MemUsed:.01f} GB", measure_mem="G"),
             BAR_PAD,
         ],
-        28,
+        BAR_SIZE,
         border_color=COLORS.border,
         border_width=[0] * 4,
         background=COLORS.bar_bg,
@@ -63,7 +64,7 @@ layouts = [layout.Columns(
 
 widget_defaults = {
     "font": "monospace sans-serif",
-    "fontsize": 12,
+    "fontsize": BAR_SIZE // 2,
     "padding": 3,
     "foreground": COLORS.bar_fg
 }

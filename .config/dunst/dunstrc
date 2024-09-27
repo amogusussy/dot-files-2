@@ -12,10 +12,12 @@
     # %n progress value without any extra characters
     # %% Literal %
     format = "<b>%a</b>\n%s%p %n\n%b"
+    font = "JetBrains Mono 12"
     transparency = 0.5
     corner_radius = 12
     width = 300
     gap_size = 6
+    frame_width = 2
 
 [urgency_low]
     background = "#1a1b26"
