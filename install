@@ -20,7 +20,6 @@ cp -r "Pictures/" "$HOME/Pictures"
 cp .bashrc $HOME/
 cp .xinitrc $HOME/
 
-
 ## Install all packages
 void_packages=(
   # System
