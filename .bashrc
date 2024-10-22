@@ -164,7 +164,11 @@ backup() {
     --exclude=".cargo" \
     --exclude="pyc" \
     --exclude="$HOME/.local/share/flatpak" \
-    --exclude="tor-browser"
+    --exclude="tor-browser" \
+    --exclude="$HOME/Videos/" \
+    --exclude="Unity" \
+    --exclude="whonix" \
+    --exclude="Jellyfin"
 }
 
 trash_rm () {

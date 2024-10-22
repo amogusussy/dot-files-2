@@ -29,8 +29,16 @@ screens = [Screen(
             widget.Spacer(),
             widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
             widget.Spacer(),
-            widget.CPU(format="CPU: {load_percent}%"),
-            widget.Memory(format="Mem: {MemUsed:.01f} GB", measure_mem="G"),
+            widget.CPU(
+                format="CPU {load_percent}%",
+                # background=COLORS.purple,
+            ),
+            BAR_PAD,
+            widget.Memory(
+                format=" {MemUsed:.01f} GB",
+                measure_mem="G",
+                # background=COLORS.green,
+            ),
             BAR_PAD,
         ],
         BAR_SIZE,
