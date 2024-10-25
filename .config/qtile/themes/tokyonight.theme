@@ -3,8 +3,5 @@ bar_fg: #c0caf5
 border: #7aa2f7
 workspace_norm: #565f89
 workspace_active: #9ece6a
-focused: #bb9af7 
+focused: #9ece6a 
 unfocused: #565f89
-
-purple: #bb9af7 
-green: #9ece6a

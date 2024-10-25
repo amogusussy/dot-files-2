@@ -6,6 +6,7 @@ from groupbox_2 import GroupBox2
 import global_variables as G
 import subprocess
 import theme
+import random
 
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
@@ -14,6 +15,7 @@ BAR_SIZE = 24
 COLORS = theme.Theme()
 
 BAR_PAD = widget.TextBox()
+
 
 screens = [Screen(
     wallpaper=COLORS.wallpaper_file,
