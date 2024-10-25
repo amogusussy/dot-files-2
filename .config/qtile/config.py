@@ -14,32 +14,39 @@ BAR_SIZE = 24
 COLORS = theme.Theme()
 
 BAR_PAD = widget.TextBox()
+
 screens = [Screen(
     wallpaper=COLORS.wallpaper_file,
     wallpaper_mode='stretch',
     top=bar.Bar(
         [
-            BAR_PAD,
+            widget.TextBox(
+                " ◉ ",
+                fontsize=20,
+                mouse_callbacks={
+                    "Button1": lazy.spawn("rofi -show drun"),
+                }
+            ),
             GroupBox2(
                 normal_style={"text_color": COLORS.workspace_norm},
                 has_windows_style={"text_color": COLORS.workspace_active},
                 active_any_screen_style={"line": 1},
                 disable_drag=True,
+                fontsize=BAR_SIZE // 2 - 2,
+                padding=3,
             ),
             widget.Spacer(),
             widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
             widget.Spacer(),
             widget.CPU(
                 format="CPU {load_percent}%",
-                # background=COLORS.purple,
             ),
             BAR_PAD,
             widget.Memory(
                 format=" {MemUsed:.01f} GB",
                 measure_mem="G",
-                # background=COLORS.green,
             ),
-            BAR_PAD,
+            widget.TextBox(),
         ],
         BAR_SIZE,
         border_color=COLORS.border,
@@ -71,7 +78,7 @@ layouts = [layout.Columns(
 )]
 
 widget_defaults = {
-    "font": "monospace sans-serif",
+    "font": "JetBrains Mono",
     "fontsize": BAR_SIZE // 2,
     "padding": 3,
     "foreground": COLORS.bar_fg
