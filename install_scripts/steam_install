@@ -1,0 +1,9 @@
+#!/bin/bash
+
+doas xbps-install \
+  xz curl dbus freetype gdk-pixbuf \
+  hicolor-icon-theme desktop-file-utils \
+  liberation-fonts-ttf file tar bash coreutils lsof
+
+
+flatpak install --user flathub com.valvesoftware.Steam

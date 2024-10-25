@@ -1,6 +1,6 @@
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from settings.keys import keys, mouse
+from keys import keys, mouse
 from libqtile import layout, hook, bar, widget
 from groupbox_2 import GroupBox2
 import global_variables as G
