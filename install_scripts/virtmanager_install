@@ -4,6 +4,7 @@ packages=(qemu virt-manager virt-viewer)
 
 sudo xbps-install -S
 sudo xbps-install ${packages[@]}
+sudo usermod -aG libvirt $USER
 
 sudo ln -s /etc/sv/virt* /var/service/
 sudo ln -s /etc/sv/libvirtd /var/service/
