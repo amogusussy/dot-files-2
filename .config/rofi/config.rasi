@@ -12,7 +12,7 @@ configuration{
     display-drun: "  Apps";
 }
 
-@theme "forest"
+@theme "tokyonight"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;

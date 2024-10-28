@@ -13,9 +13,7 @@ MARGIN_DEFAULT = 4
 DESKTOPS = 6
 BAR_SIZE = 24
 COLORS = theme.Theme()
-
 BAR_PAD = widget.TextBox()
-
 
 screens = [Screen(
     wallpaper=COLORS.wallpaper_file,
@@ -23,8 +21,8 @@ screens = [Screen(
     top=bar.Bar(
         [
             widget.TextBox(
-                " ◉ ",
-                fontsize=20,
+                " ◉",
+                fontsize=BAR_SIZE - 2,
                 mouse_callbacks={
                     "Button1": lazy.spawn("rofi -show drun"),
                 }
@@ -34,8 +32,7 @@ screens = [Screen(
                 has_windows_style={"text_color": COLORS.workspace_active},
                 active_any_screen_style={"line": 1},
                 disable_drag=True,
-                fontsize=BAR_SIZE // 2 - 2,
-                padding=3,
+                fontsize=17,
             ),
             widget.Spacer(),
             widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
