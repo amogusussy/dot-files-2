@@ -1,3 +1,5 @@
+sleep 3
+
 pipewire &
 pulseaudio &
 xset r rate 200 50 &
