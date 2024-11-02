@@ -20,6 +20,22 @@ cp -r "Pictures/" "$HOME/Pictures"
 cp .bashrc $HOME/
 cp .xinitrc $HOME/
 
+## Add extra drive to fstab
+UUID="678f4cf8-9ba1-4bfb-9642-dba3b7e92e1b"
+
+printf "\n\n\n\033[0;31mDo you want to add $UUID to /etc/fstab\033[0m"
+read -p "(y/n) " yes
+if [[ "$yes" != "y" ]]; then
+  drive="\nUUID=$UUID /mnt/SteamDrive ext4 defaults 0 1"
+  echo -e $drive | sudo tee -a /etc/fstab
+  sudo mkdir -p /mnt/SteamDrive/
+  sudo mount -U "678f4cf8-9ba1-4bfb-9642-dba3b7e92e1b" /mnt/SteamDrive/
+
+  # Copy flatpak files
+  mkdir -p /home/matthew/.var/
+  cp -r /mnt/SteamDrive/Backups/2024-10-30-Backup/.var/* /home/matthew/.var/
+fi
+
 ## Install all packages
 void_packages=(
   # System
@@ -56,16 +72,12 @@ services=(
   "rtkit"
 )
 
-for service in ${services}; do
-  if [[ ! -L /var/service/$service/ ]]; then
+for service in "${services[@]}"; do
+  if [[ ! -L "/var/service/$service/" ]]; then
     sudo ln -s /etc/sv/$service/ /var/service/
   fi
 done
 
-sudo ln -s /etc/sv/dbus/ /var/service/
-sudo ln -s /etc/sv/elogind/ /var/service/
-sudo ln -s /etc/sv/polkitd/ /var/service/
-sudo ln -s /etc/sv/rtkit/ /var/service/
 
 # install Jetbrains Mono
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"

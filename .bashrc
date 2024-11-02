@@ -151,7 +151,7 @@ paste-file() {
 backup() {
   excludes=$(printf " --exclude=\"%s\"" $(ls ~/.var/app/ -1 | /bin/grep -Pv "librewolf"))
 
-  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2024-09-18-Backup/ \
+  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2024-10-30-Backup/ \
     --exclude=.games/ \
     --exclude=Torrents \
     --exclude=.cache/ \

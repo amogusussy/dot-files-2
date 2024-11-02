@@ -6,7 +6,6 @@ from groupbox_2 import GroupBox2
 import global_variables as G
 import subprocess
 import theme
-import random
 
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
