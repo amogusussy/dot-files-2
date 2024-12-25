@@ -14,51 +14,70 @@ BAR_SIZE = 24
 COLORS = theme.Theme()
 BAR_PAD = widget.TextBox()
 
-screens = [Screen(
-    wallpaper=COLORS.wallpaper_file,
-    wallpaper_mode='stretch',
-    top=bar.Bar(
-        [
-            widget.TextBox(
-                " ◉",
-                fontsize=BAR_SIZE - 2,
-                mouse_callbacks={
-                    "Button1": lazy.spawn("rofi -show drun"),
-                }
-            ),
-            GroupBox2(
-                normal_style={"text_color": COLORS.workspace_norm},
-                has_windows_style={"text_color": COLORS.workspace_active},
-                active_any_screen_style={"line": 1},
-                disable_drag=True,
-                fontsize=17,
-            ),
-            widget.Spacer(),
-            widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
-            widget.Spacer(),
-            widget.CPU(
-                format="CPU {load_percent}%",
-            ),
-            BAR_PAD,
-            widget.Memory(
-                format=" {MemUsed:.01f} GB",
-                measure_mem="G",
-            ),
-            widget.TextBox(),
-        ],
-        BAR_SIZE,
-        border_color=COLORS.border,
-        border_width=[0] * 4,
-        background=COLORS.bar_bg,
-        foreground=COLORS.bar_fg,
-        margin=[2, 4, 0, 4]
+BAR = lambda: bar.Bar(
+    [
+        widget.TextBox(
+            " ◉",
+            fontsize=BAR_SIZE - 2,
+            mouse_callbacks={
+                "Button1": lazy.spawn("rofi -show drun"),
+            }
+        ),
+        GroupBox2(
+            normal_style={"text_color": COLORS.workspace_norm},
+            has_windows_style={"text_color": COLORS.workspace_active},
+            active_any_screen_style={"line": 1},
+            disable_drag=True,
+            fontsize=17,
+        ),
+        widget.Spacer(),
+        widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
+        widget.Spacer(),
+        widget.CPU(
+            format="CPU {load_percent}%",
+        ),
+        BAR_PAD,
+        widget.Memory(
+            format=" {MemUsed:.01f} GB",
+            measure_mem="G",
+        ),
+        widget.TextBox(),
+    ],
+    BAR_SIZE,
+    border_color=COLORS.border,
+    border_width=[0] * 4,
+    background=COLORS.bar_bg,
+    foreground=COLORS.bar_fg,
+    margin=[2, 4, 0, 4]
+)
+
+screens = [
+    Screen(
+        wallpaper=COLORS.wallpaper_file,
+        wallpaper_mode='stretch',
+        top=BAR(),
+    ),
+    Screen(
+        wallpaper=COLORS.wallpaper_file,
+        wallpaper_mode='stretch',
+        top=BAR(),
     )
-)]
+]
 
 # Run ~/.config/qtile/autostart.sh on startup
 hook.subscribe.startup_once(lambda: subprocess.run(
     G.HOME_DIR +  "/.config/qtile/autostart.sh"
 ))
+
+@lazy.function
+def minimize_all(qtile):
+    for win in qtile.current_group.windows:
+        if hasattr(win, "toggle_minimize"):
+            win.toggle_minimize()
+
+keys += [
+    Key([G.MOD, "shift"], "n", minimize_all(), desc="Toggle minimization on all window"),
+]
 
 groups = [Group(str(i)) for i in range(1, DESKTOPS + 1)]
 for i in groups:
