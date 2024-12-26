@@ -9,7 +9,7 @@ import theme
 
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
-DESKTOPS = 6
+DESKTOPS = 10
 BAR_SIZE = 24
 COLORS = theme.Theme()
 BAR_PAD = widget.TextBox()

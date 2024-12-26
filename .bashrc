@@ -98,12 +98,19 @@ reverse-output() {
     printf "Audio already reversed\n"
     return
   fi
-  pactl load-module module-remap-sink \
-    sink_name=reverse-stereo \
-    master=1 \
-    channels=2 \
-    master_channel_map=front-right,front-left \
-    channel_map=front-left,front-right
+
+  for ((i = 0; i < 10; i++)); do
+    pactl load-module module-remap-sink \
+      sink_name=reverse-stereo \
+      master=$i \
+      channels=2 \
+      master_channel_map=front-right,front-left \
+      channel_map=front-left,front-right
+    if [ "$?" == "0" ]; then
+      break
+    fi
+  done
+  
   pactl set-default-sink reverse-stereo
 }
 
