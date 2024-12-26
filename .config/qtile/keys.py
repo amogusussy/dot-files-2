@@ -22,7 +22,7 @@ keys = [
     Key("M-l", lazy.layout.grow_right(), desc="Increase windows size to the right"),
     Key("M-C-j", lazy.layout.grow_down(), desc="Increase windows size downward"),
     Key("M-C-k", lazy.layout.grow_up(), desc="Increase widnows size upward"),
-    Key("M-n", lazy.layout.normalize(), desc="Return all windows to default width"),
+    Key("M-S-n", lazy.layout.normalize(), desc="Return all windows to default width"),
 
     # Misc
     Key("M-q", lazy.window.kill(), desc="Kill active window"),

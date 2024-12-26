@@ -76,7 +76,7 @@ def minimize_all(qtile):
             win.toggle_minimize()
 
 keys += [
-    Key([G.MOD, "shift"], "n", minimize_all(), desc="Toggle minimization on all window"),
+    Key([G.MOD], "n", minimize_all(), desc="Toggle minimization on all window"),
 ]
 
 groups = [Group(str(i)) for i in range(1, DESKTOPS + 1)]
