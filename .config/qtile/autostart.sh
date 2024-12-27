@@ -4,7 +4,10 @@
 # pkill redshift;
 # redshift -l 52.3:1.5 &
 
-# Reverse audio.
+# pkill pulseaudio
+# pkill pipewire
+
+Reverse audio.
 pactl load-module module-remap-sink \
   sink_name=reverse-stereo \
   master=1 \
