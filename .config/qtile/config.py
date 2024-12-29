@@ -71,9 +71,13 @@ hook.subscribe.startup_once(lambda: subprocess.run(
 
 @lazy.function
 def minimize_all(qtile):
-    for win in qtile.current_group.windows:
-        if hasattr(win, "toggle_minimize"):
-            win.toggle_minimize()
+    for group in qtile.groups:
+        # if group not on any monitors
+        if not group.screen:
+            continue
+        for win in group.windows:
+            if hasattr(win, "toggle_minimize"):
+                win.toggle_minimize()
 
 keys += [
     Key([G.MOD], "n", minimize_all(), desc="Toggle minimization on all window"),
