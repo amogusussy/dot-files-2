@@ -2,6 +2,7 @@ from libqtile.config import EzKey as Key
 from libqtile.config import Click, Drag
 from libqtile.lazy import lazy
 import global_variables as G
+import custom_functions as funcs
 
 alacritty_bin = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
 rofi_bin = f"rofi -show drun -theme-str '@theme \"{G.THEME_NAME}\"'"
@@ -22,7 +23,7 @@ keys = [
     Key("M-l", lazy.layout.grow_right(), desc="Increase windows size to the right"),
     Key("M-C-j", lazy.layout.grow_down(), desc="Increase windows size downward"),
     Key("M-C-k", lazy.layout.grow_up(), desc="Increase widnows size upward"),
-    Key("M-S-n", lazy.layout.normalize(), desc="Return all windows to default width"),
+    # Key("M-S-n", lazy.layout.normalize(), desc="Return all windows to default width"),
 
     # Misc
     Key("M-q", lazy.window.kill(), desc="Kill active window"),
@@ -44,6 +45,11 @@ keys = [
     Key("<XF86AudioPlay>", lazy.spawn("audio play-pause"), desc="Toggle audio stream (play/pause)"),
     Key("<XF86AudioNext>", lazy.spawn("audio next"), desc="Next in playlist"),
     Key("<XF86AudioPrev>", lazy.spawn("audio prev"), desc="Last in playlist"),
+
+
+    # Minimize windows on a given monitor
+    Key("M-S-n", funcs.minimize_all_monitors(), desc="Toggle minimize on all monitors"),
+    Key("M-n", funcs.minimize_curr_monitor(), desc="Toggle minimize on all windows on current monitor"),
 ]
 
 # Drag floating layouts.

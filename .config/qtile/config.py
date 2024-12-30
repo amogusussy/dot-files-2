@@ -1,11 +1,15 @@
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from keys import keys, mouse
 from libqtile import layout, hook, bar, widget
-from groupbox_2 import GroupBox2
-import global_variables as G
 import subprocess
+
+from groupbox_2 import GroupBox2
+from keys import keys, mouse
+import global_variables as G
 import theme
+
+cursor_wrap = True
+
 
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
@@ -69,19 +73,6 @@ hook.subscribe.startup_once(lambda: subprocess.run(
     G.HOME_DIR +  "/.config/qtile/autostart.sh"
 ))
 
-@lazy.function
-def minimize_all(qtile):
-    for group in qtile.groups:
-        # if group not on any monitors
-        if not group.screen:
-            continue
-        for win in group.windows:
-            if hasattr(win, "toggle_minimize"):
-                win.toggle_minimize()
-
-keys += [
-    Key([G.MOD], "n", minimize_all(), desc="Toggle minimization on all window"),
-]
 
 groups = [Group(str(i)) for i in range(1, DESKTOPS + 1)]
 for i in groups:
