@@ -170,7 +170,7 @@ backup() {
     --exclude="__pycache__" \
     --exclude=".cargo" \
     --exclude="pyc" \
-    --exclude="$HOME/.local/share/flatpak" \
+    --exclude=".local/share/flatpak/" \
     --exclude="tor-browser" \
     --exclude="$HOME/Videos/" \
     --exclude="Unity" \
