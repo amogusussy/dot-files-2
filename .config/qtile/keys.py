@@ -46,7 +46,6 @@ keys = [
     Key("<XF86AudioNext>", lazy.spawn("audio next"), desc="Next in playlist"),
     Key("<XF86AudioPrev>", lazy.spawn("audio prev"), desc="Last in playlist"),
 
-
     # Minimize windows on a given monitor
     Key("M-S-n", funcs.minimize_monitors(all=True), desc="Toggle minimize on all monitors"),
     Key("M-n", funcs.minimize_monitors(), desc="Toggle minimize on all windows on current monitor"),

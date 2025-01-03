@@ -114,6 +114,15 @@ reverse-output() {
   pactl set-default-sink reverse-stereo
 }
 
+make_virt_env_11() {
+  virtualenv -p "python3.11" env
+  source ./env/bin/activate
+  pip3.11 install --upgrade pip
+  if [ -f "requirements.txt" ]; then
+    pip install -r requirements.txt
+  fi
+}
+
 make_virt_env() {
   virtualenv -p python3 env
   source ./env/bin/activate
