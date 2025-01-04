@@ -49,7 +49,7 @@ BAR = lambda: bar.Bar(
     ],
     BAR_SIZE,
     border_color=COLORS.border,
-    border_width=[0] * 4,
+    border_width=[0, 0, 0, 0],
     background=COLORS.bar_bg,
     foreground=COLORS.bar_fg,
     margin=[2, 4, 0, 4]
