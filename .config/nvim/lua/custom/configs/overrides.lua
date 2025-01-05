@@ -12,6 +12,7 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "python"
   },
   indent = {
     enable = true,
@@ -23,6 +24,9 @@ M.treesitter = {
 
 M.mason = {
   ensure_installed = {
+    -- python
+    "python-lsp-server",
+
     -- lua stuff
     "lua-language-server",
     "stylua",

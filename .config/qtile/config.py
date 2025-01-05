@@ -31,7 +31,7 @@ def BAR():
             has_windows_style={"text_color": COLORS.workspace_active},
             active_any_screen_style={"line": 1},
             disable_drag=True,
-            fontsize=17,
+            fontsize=13,
         ),
         widget.Spacer(),
         widget.Clock(format="󱑆 %H:%M |  %G %-e %b"),
