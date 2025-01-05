@@ -25,7 +25,7 @@ UUID="678f4cf8-9ba1-4bfb-9642-dba3b7e92e1b"
 
 printf "\n\n\n\033[0;31mDo you want to add $UUID to /etc/fstab\033[0m"
 read -p "(y/n) " yes
-if [[ "$yes" != "y" ]]; then
+if [[ "$yes" = "y" ]]; then
   drive="\nUUID=$UUID /mnt/SteamDrive ext4 defaults 0 1"
   echo -e $drive | sudo tee -a /etc/fstab
   sudo mkdir -p /mnt/SteamDrive/

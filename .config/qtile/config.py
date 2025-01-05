@@ -1,4 +1,4 @@
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile import layout, hook, bar, widget
 import subprocess
@@ -9,8 +9,6 @@ import global_variables as G
 import theme
 
 cursor_wrap = True
-
-
 BORDER_WIDTH = 2
 MARGIN_DEFAULT = 4
 DESKTOPS = 9
@@ -18,8 +16,9 @@ BAR_SIZE = 24
 COLORS = theme.Theme()
 BAR_PAD = widget.TextBox()
 
-BAR = lambda: bar.Bar(
-    [
+
+def BAR():
+    return bar.Bar([
         widget.TextBox(
             " ◉",
             fontsize=BAR_SIZE - 2,
@@ -35,7 +34,7 @@ BAR = lambda: bar.Bar(
             fontsize=17,
         ),
         widget.Spacer(),
-        widget.Clock(format=f"󱑆 %H:%M |  %G %-e %b"),
+        widget.Clock(format="󱑆 %H:%M |  %G %-e %b"),
         widget.Spacer(),
         widget.CPU(
             format="CPU {load_percent}%",
@@ -47,13 +46,14 @@ BAR = lambda: bar.Bar(
         ),
         widget.TextBox(),
     ],
-    BAR_SIZE,
-    border_color=COLORS.border,
-    border_width=[0, 0, 0, 0],
-    background=COLORS.bar_bg,
-    foreground=COLORS.bar_fg,
-    margin=[2, 4, 0, 4]
-)
+        BAR_SIZE,
+        border_color=COLORS.border,
+        border_width=[0, 0, 0, 0],
+        background=COLORS.bar_bg,
+        foreground=COLORS.bar_fg,
+        margin=[2, 4, 0, 4]
+    )
+
 
 screens = [
     Screen(
@@ -70,7 +70,7 @@ screens = [
 
 # Run ~/.config/qtile/autostart.sh on startup
 hook.subscribe.startup_once(lambda: subprocess.run(
-    G.HOME_DIR +  "/.config/qtile/autostart.sh"
+    G.HOME_DIR + "/.config/qtile/autostart.sh"
 ))
 
 
