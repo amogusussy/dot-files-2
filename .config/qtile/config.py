@@ -4,7 +4,7 @@ from libqtile import layout, hook, bar, widget
 import subprocess
 
 from groupbox_2 import GroupBox2
-from keys import keys, mouse
+import keys
 import global_variables as G
 import theme
 
@@ -15,6 +15,9 @@ DESKTOPS = 9
 BAR_SIZE = 24
 COLORS = theme.Theme()
 BAR_PAD = widget.TextBox()
+
+mouse = keys.MOUSE
+keys = keys.KEYS
 
 
 def BAR():

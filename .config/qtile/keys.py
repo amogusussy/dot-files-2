@@ -7,7 +7,7 @@ import custom_functions as funcs
 alacritty_bin = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
 rofi_bin = f"rofi -show drun -theme-str '@theme \"{G.THEME_NAME}\"'"
 
-keys = [
+KEYS = [
     # Focus windows. Cycle through both tiling and floating windows.
     Key("M-j", lazy.group.next_window(), desc="Cycle to next window"),
     Key("M-k", lazy.group.prev_window(), desc="Cycle to previous window"),
@@ -52,7 +52,7 @@ keys = [
 ]
 
 # Drag floating layouts.
-mouse = [
+MOUSE = [
     Drag([G.MOD], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
     Drag([G.MOD], "Button3", lazy.window.set_size_floating(),
