@@ -55,7 +55,7 @@ set scroll-step 100
 # set recolor-keephue             "true"    # keep original color
 #
 
-Attempt to recreate Tokyo Night in Zathura
+# Attempt to recreate Tokyo Night in Zathura
 
 set default-bg                  "#181820"
 set default-fg                  "#a9b1d6"

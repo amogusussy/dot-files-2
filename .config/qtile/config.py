@@ -106,6 +106,8 @@ floating_layout = layout.Floating(
     border_width=BORDER_WIDTH,
     float_rules=[
         Match(wm_class='V Picture-in-Picture'),
+        Match(wm_class='Godot'),
+        Match(wm_class='Godot_Engine'),
     ]
 )
 

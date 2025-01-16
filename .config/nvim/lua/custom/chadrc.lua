@@ -7,8 +7,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "tokyonight",
-  theme_toggle = { "tokyonight", "one_light" },
+  theme = "dark_horizon",
+  theme_toggle = { "dark_horizon", "one_light" },
 
   cmp = {
     icons = true,
