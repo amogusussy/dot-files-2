@@ -100,18 +100,21 @@ reverse-output() {
   fi
 
   for ((i = 0; i < 10; i++)); do
-    pactl load-module module-remap-sink \
-      sink_name=reverse-stereo \
+    $output=$(pactl load-module module-remap-sink \
+      "sink_name=reverse-stereo-$i" \
       master=$i \
       channels=2 \
       master_channel_map=front-right,front-left \
-      channel_map=front-left,front-right
+      channel_map=front-left,front-right)
+
     if [ "$?" == "0" ]; then
+      pactl set-default-sink "reverse-stereo-$i"
       break
+    else
+      pactl unload-module "$output"
     fi
+      
   done
-  
-  pactl set-default-sink reverse-stereo
 }
 
 make_virt_env_11() {
@@ -167,7 +170,7 @@ paste-file() {
 backup() {
   excludes=$(printf " --exclude=\"%s\"" $(ls ~/.var/app/ -1 | /bin/grep -Pv "librewolf"))
 
-  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2024-12-27-Backup/ \
+  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2025-01-19-Backup/ \
     --exclude=.games/ \
     --exclude=Torrents \
     --exclude=.cache/ \

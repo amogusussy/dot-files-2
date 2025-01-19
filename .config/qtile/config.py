@@ -94,7 +94,7 @@ layouts = [layout.Columns(
 
 widget_defaults = {
     "font": "JetBrains Mono",
-    "fontsize": BAR_SIZE // 2,
+    "fontsize": BAR_SIZE >> 1,
     "padding": 3,
     "foreground": COLORS.bar_fg
 }

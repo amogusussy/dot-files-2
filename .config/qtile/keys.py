@@ -49,6 +49,7 @@ KEYS = [
     # Minimize windows on a given monitor
     Key("M-S-n", funcs.minimize_monitors(all=True), desc="Toggle minimize on all monitors"),
     Key("M-n", funcs.minimize_monitors(), desc="Toggle minimize on all windows on current monitor"),
+    Key("M-C-n", funcs.minimize_other_monitor(), desc="Toggle minimize on other active monitor"),
 ]
 
 # Drag floating layouts.
