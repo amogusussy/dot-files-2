@@ -94,27 +94,18 @@ shred_dir() {
 }
 
 reverse-output() {
-  if [[ "$(pactl get-default-sink)" = "reverse-stereo" ]]; then
+  if [[ "$(pactl get-default-sink)" == "reverse-stereo" ]]; then
     printf "Audio already reversed\n"
     return
   fi
+  sink_number="$(pactl list short sinks | grep "RUNNING" | awk '{print $1}')"
 
-  for ((i = 0; i < 10; i++)); do
-    $output=$(pactl load-module module-remap-sink \
-      "sink_name=reverse-stereo-$i" \
-      master=$i \
-      channels=2 \
-      master_channel_map=front-right,front-left \
-      channel_map=front-left,front-right)
+  $output="$(pactl load-module module-remap-sink "sink_name=reverse-stereo" master="$sink_number" channels=2 master_channel_map=front-right,front-left channel_map=front-left,front-right)"
 
-    if [ "$?" == "0" ]; then
-      pactl set-default-sink "reverse-stereo-$i"
-      break
-    else
-      pactl unload-module "$output"
-    fi
-      
-  done
+  if [[ "$?" == "0" ]]; then
+    pactl set-default-sink "reverse-stereo"
+    break
+  fi
 }
 
 make_virt_env_11() {

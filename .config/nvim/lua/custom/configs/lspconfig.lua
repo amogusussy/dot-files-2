@@ -28,29 +28,49 @@ lspconfig.pylint = {
 }
 
 
-lspconfig.pylsp.setup {
+lspconfig.pyright.setup {
   on_attach=on_attach,
   filetypes = {'python'},
   settings = {
-  configurationSources = {"flake8"},
-  formatCommand = {"black"},
-  pylsp = {
-    plugins = {
-      jedi_completion = {
-        include_params = true,
-      },
-      jedi_signature_help = {enabled = true},
-      jedi = {
-        extra_paths = {'~/projects/work_odoo/odoo14', '~/projects/work_odoo/odoo14'},
-      },
-      pyflakes={enabled=true},
-      pylsp_mypy={enabled=false},
-      pycodestyle={
-        enabled=true,
-        ignore={'E501', 'E231'},
-        maxLineLength=120},
-        yapf={enabled=true}
-      }
+    python = {
+      autoSearchPaths = true,
+      useLibraryCodeForTypes = true
     }
+  }
+}
+
+
+-- lspconfig.pylsp.setup {
+--   on_attach=on_attach,
+--   filetypes = {'python'},
+--   settings = {
+--   configurationSources = {"flake8"},
+--   formatCommand = {"black"},
+--   pylsp = {
+--     plugins = {
+--       jedi_completion = {
+--         include_params = true,
+--       },
+--       jedi_signature_help = {enabled = true},
+--       jedi = {
+--         extra_paths = {'~/projects/work_odoo/odoo14', '~/projects/work_odoo/odoo14'},
+--       },
+--       pyflakes={enabled=true},
+--       pylsp_mypy={enabled=false},
+--       pycodestyle={
+--         enabled=true,
+--         ignore={'E501', 'E231'},
+--         maxLineLength=120},
+--         yapf={enabled=true}
+--       }
+--     }
+--   }
+-- }
+
+
+lspconfig.omnisharp.setup {
+  on_attach=on_attach,
+  filetypes={'cs'},
+  settings = {
   }
 }

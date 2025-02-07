@@ -170,7 +170,7 @@ class GroupBox2(GroupBox):
         else:
             border_width = 0
 
-        y = self.margin_y
+        y = self.margin_y - 2
 
         # Draw block
         if style.background_color is not None:
