@@ -5,7 +5,7 @@ local capabilities = plugins_lspconfig.capabilities
 local lspconfig = require("lspconfig")
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "unocss", "emmet_ls" }
+local servers = { "unocss", "emmet_ls", "bashls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

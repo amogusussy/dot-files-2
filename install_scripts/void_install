@@ -19,7 +19,7 @@ void_packages=(
   # Neovim
   neovim python3-lsp-server
   # Other
-  lsd rsync elogind rtkit polkit pnpm xauth
+  lsd rsync elogind rtkit polkit pnpm xauth ripgrep
 )
 
 sudo xbps-install -Syu
