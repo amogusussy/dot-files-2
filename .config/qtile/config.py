@@ -1,4 +1,5 @@
-from libqtile.config import Group, Key, Match, Screen
+from libqtile.config import Group, Match, Screen
+from libqtile.config import EzKey as Key
 from libqtile.lazy import lazy
 from libqtile import layout, hook, bar, widget
 import subprocess
@@ -80,8 +81,8 @@ hook.subscribe.startup_once(lambda: subprocess.run(
 groups = [Group(str(i)) for i in range(1, DESKTOPS + 1)]
 for i in groups:
     keys.extend([
-        Key([G.MOD], i.name, lazy.group[i.name].toscreen()),
-        Key([G.MOD, "shift"], i.name, lazy.window.togroup(i.name))
+        Key(f"M-{i.name}", lazy.group[i.name].toscreen()),
+        Key(f"M-S-{i.name}", lazy.window.togroup(i.name)),
     ])
 
 layouts = [layout.Columns(

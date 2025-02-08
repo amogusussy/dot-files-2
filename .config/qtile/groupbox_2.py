@@ -21,6 +21,11 @@ class BoxStyle:
     line_color = None
     line_size = None
 
+    border_size: int
+    line_length: int
+    border_active: bool
+    line_active: bool
+
     def __init__(self, **config):
         for name in BoxStyle.attrs:
             self.__setattr__(name, config[name] if name in config else None)
@@ -47,7 +52,7 @@ class BoxStyle:
 
         return result
 
-    def get_default():
+    def get_default(self):
         """Returns a new instance with all attributes set."""
         return BoxStyle(
             text_color="#ffffff",

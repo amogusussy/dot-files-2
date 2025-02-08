@@ -6,6 +6,20 @@ import global_variables as G
 
 @dataclass
 class Theme():
+    theme: str
+    home_dir: str
+    filename: str
+    wallpaper_file: str
+
+    bar_bg: str
+    bar_fg: str
+    border: str
+    workspace_norm: str
+    workspace_active: str
+    focused: str
+    unfocused: str
+
+
     def __init__(self):
         self.theme = G.THEME_NAME
         self.home_dir = G.HOME_DIR

@@ -60,6 +60,13 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   dependencies = "kevinhwang91/promise-async",
+  --   config = function()
+  --     require("custom.configs.ufo")
+  --   end,
+  -- }
 }
 
 return plugins
