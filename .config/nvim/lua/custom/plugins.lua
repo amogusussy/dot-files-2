@@ -67,6 +67,10 @@ local plugins = {
   --     require("custom.configs.ufo")
   --   end,
   -- }
+
+  {
+    "nvim-treesitter/nvim-treesitter-context"
+  }
 }
 
 return plugins

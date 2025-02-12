@@ -7,6 +7,20 @@ from libqtile.widget.groupbox import GroupBox
 from copy import copy, deepcopy
 
 
+def get_default():
+    """Returns a new instance with all attributes set."""
+    return BoxStyle(
+        text_color="#ffffff",
+        background_color=None,
+        rounded=False,
+        border=0,
+        border_color=None,
+        line=0,
+        line_color=None,
+        line_size=1
+    )
+
+
 class BoxStyle:
     """Represents a highlight style for the GroupBox2 widget's elements."""
 
@@ -21,10 +35,10 @@ class BoxStyle:
     line_color = None
     line_size = None
 
-    border_size: int
-    line_length: int
-    border_active: bool
-    line_active: bool
+    border_active = None
+    line_active = None
+    border_size = None
+    line_length = None
 
     def __init__(self, **config):
         for name in BoxStyle.attrs:
@@ -52,18 +66,6 @@ class BoxStyle:
 
         return result
 
-    def get_default(self):
-        """Returns a new instance with all attributes set."""
-        return BoxStyle(
-            text_color="#ffffff",
-            background_color=None,
-            rounded=False,
-            border=0,
-            border_color=None,
-            line=0,
-            line_color=None,
-            line_size=1
-        )
 
 
 class GroupBox2(GroupBox):
@@ -213,7 +215,7 @@ class GroupBox2(GroupBox):
         offset = self.margin_x
 
         for i, g in enumerate(self.groups):
-            active_style = BoxStyle.get_default().combine(self.get_style("normal_style"))
+            active_style = get_default().combine(self.get_style("normal_style"))
 
             has_windows = bool(g.windows)
             active_any = bool(g.screen)
