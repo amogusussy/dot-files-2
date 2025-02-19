@@ -112,5 +112,6 @@ floating_layout = layout.Floating(
     ]
 )
 
+cursor_wrap = True
 # Fix broken Java applications
 wmname = "LG3D"

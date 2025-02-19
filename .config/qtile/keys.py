@@ -50,6 +50,7 @@ KEYS = [
     Key("M-S-n", funcs.minimize_monitors(all=True), desc="Toggle minimize on all monitors"),
     Key("M-n", funcs.minimize_monitors(), desc="Toggle minimize on all windows on current monitor"),
     Key("M-C-n", funcs.minimize_monitors(all=True, other=True), desc="Toggle minimize on other active monitor"),
+    Key("M-C-t", lazy.next_screen(), desc="Move mouse to other screen"),
 ]
 
 # Drag floating layouts.
