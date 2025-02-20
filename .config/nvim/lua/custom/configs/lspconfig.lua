@@ -15,16 +15,16 @@ for _, lsp in ipairs(servers) do
 end
 
 
-lspconfig.pylint = {
-  default_config = {
-    cmd = { 'pylint' },
-    filetypes = { 'python' },
-    init_options = {
-      command = { 'pylint', 'run', '--output-format', 'json',  },
-      ignore={ "E501" },
-    },
-  },
-}
+-- lspconfig.pylint = {
+--   default_config = {
+--     cmd = { 'pylint' },
+--     filetypes = { 'python' },
+--     init_options = {
+--       command = { 'pylint', 'run', '--output-format', 'json',  },
+--       ignore={ "E501" },
+--     },
+--   },
+-- }
 
 
 lspconfig.pyright.setup {
