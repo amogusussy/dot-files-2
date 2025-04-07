@@ -40,6 +40,7 @@ KEYS = [
     Key("M-e", lazy.spawn(f"{alacritty_bin} -e env EDITOR=nvim ranger"), desc="Open file manager"),
     Key("M-<space>", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
     Key("M-a", lazy.spawn(f"{alacritty_bin} -e pulsemixer"), desc="Open pulsemixer"),
+    Key("M-<F12>", lazy.spawn(f"flameshot gui"), desc="Screenshot"),
 
     # Audio
     Key("<XF86AudioPlay>", lazy.spawn("audio play-pause"), desc="Toggle audio stream (play/pause)"),

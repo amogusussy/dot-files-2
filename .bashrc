@@ -83,7 +83,7 @@ complete -cf cpulimit
 complete -cf torsocks
 complete -cf type
 complete -d cd
-source /usr/share/bash-completion/completions/git
+# source /usr/share/bash-completion/completions/git
 
 
 shred_dir() {
@@ -161,7 +161,7 @@ paste-file() {
 backup() {
   excludes=$(printf " --exclude=\"%s\"" $(ls ~/.var/app/ -1 | /bin/grep -Pv "librewolf"))
 
-  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2025-01-19-Backup/ \
+  echo $excludes | xargs rsync -av . /mnt/SteamDrive/Backups/2025-03-30-Backup/ \
     --exclude=.games/ \
     --exclude=Torrents \
     --exclude=.cache/ \
