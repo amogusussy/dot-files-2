@@ -5,7 +5,7 @@ local capabilities = plugins_lspconfig.capabilities
 local lspconfig = require("lspconfig")
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "unocss", "emmet_ls", "bashls", "denols", "csharp_ls", "digestif" }
+local servers = { "unocss", "emmet_ls", "bashls", "denols", "digestif" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -45,3 +45,14 @@ lspconfig.omnisharp.setup {
   settings = {
   }
 }
+
+
+lspconfig.csharp_ls.setup({
+  cmd = { "/home/matthew/.dotnet/tools/csharp-ls" },
+  on_attach = function(client, bufnr)
+    -- Safe semantic tokens start
+    if client.server_capabilities.semanticTokensProvider then
+      vim.lsp.semantic_tokens.start(bufnr, client.id)
+    end
+  end,
+})

@@ -104,7 +104,7 @@ reverse-output() {
 
   if [[ "$?" == "0" ]]; then
     pactl set-default-sink "reverse-stereo"
-    break
+    return
   fi
 }
 
@@ -234,3 +234,8 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE=' *:q:qq:clear:clea:shred:ckear:#:ks:kl:kq:m:history'
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$HOME/.dotnet:$PATH
+export PATH=$PATH:"$HOME/.dotnet/tools"

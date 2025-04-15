@@ -4,7 +4,9 @@ from libqtile.lazy import lazy
 import global_variables as G
 import custom_functions as funcs
 
-alacritty_bin = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
+# term = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
+term = f"kitty --single-instance"
+term_run = "kitty --single-instance --hold sh -c {command}"
 rofi_bin = f"rofi -show drun -theme-str '@theme \"{G.THEME_NAME}\"'"
 
 KEYS = [
@@ -36,10 +38,10 @@ KEYS = [
     Key("M-b", lazy.hide_show_bar("top"), desc="Toggle bar"),
 
     # App launch
-    Key("M-<Return>", lazy.spawn(alacritty_bin), desc="Open terminal"),
-    Key("M-e", lazy.spawn(f"{alacritty_bin} -e env EDITOR=nvim ranger"), desc="Open file manager"),
+    Key("M-<Return>", lazy.spawn(term), desc="Open terminal"),
+    Key("M-e", lazy.spawn(term_run.format(command="env EDITOR=nvim ranger")), desc="Open file manager"),
     Key("M-<space>", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
-    Key("M-a", lazy.spawn(f"{alacritty_bin} -e pulsemixer"), desc="Open pulsemixer"),
+    Key("M-a", lazy.spawn(term_run.format(command="pulsemixer")), desc="Open pulsemixer"),
     Key("M-<F12>", lazy.spawn(f"flameshot gui"), desc="Screenshot"),
 
     # Audio

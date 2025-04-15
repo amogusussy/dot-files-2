@@ -18,6 +18,7 @@ class Theme():
     workspace_active: str
     focused: str
     unfocused: str
+    pink: str
 
 
     def __init__(self):

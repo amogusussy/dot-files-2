@@ -8,6 +8,7 @@ from groupbox_2 import GroupBox2
 import keys
 import global_variables as G
 import theme
+from widgets import weather, volume
 
 cursor_wrap = True
 BORDER_WIDTH = 2
@@ -33,13 +34,19 @@ def BAR():
         GroupBox2(
             normal_style={"text_color": COLORS.workspace_norm},
             has_windows_style={"text_color": COLORS.workspace_active},
-            active_any_screen_style={"line": 1},
+            active_any_screen_style={
+                "line": 1,
+            },
             disable_drag=True,
             fontsize=13,
         ),
         widget.Spacer(),
         widget.Clock(format="󱑆 %H:%M |  %G %-e %b"),
         widget.Spacer(),
+        weather.weather_widget,
+        BAR_PAD,
+        volume.volume_widget,
+        BAR_PAD,
         widget.CPU(
             format="CPU {load_percent}%",
         ),
@@ -78,6 +85,7 @@ hook.subscribe.startup_once(lambda: subprocess.run(
 ))
 
 
+# groups = [Group(str(i), label="") for i in range(1, DESKTOPS + 1)]
 groups = [Group(str(i)) for i in range(1, DESKTOPS + 1)]
 for i in groups:
     keys.extend([
