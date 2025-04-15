@@ -22,3 +22,4 @@ cp -r $HOME/Pictures/Wallpapers/* ./Pictures/Wallpapers/
 git add .
 git commit -m "update dots"
 git push origin main
+
