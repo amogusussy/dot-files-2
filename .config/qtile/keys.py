@@ -4,9 +4,10 @@ from libqtile.lazy import lazy
 import global_variables as G
 import custom_functions as funcs
 
-# term = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
-term = f"kitty --single-instance"
-term_run = "kitty --single-instance --hold sh -c {command}"
+term = f"alacritty --config-file {G.HOME_DIR}/.config/alacritty/{G.THEME_NAME}.toml"
+term_run = term + " -e {command}"
+# term = f"kitty --single-instance"
+# term_run = "kitty --single-instance --hold sh -c {command}"
 rofi_bin = f"rofi -show drun -theme-str '@theme \"{G.THEME_NAME}\"'"
 
 KEYS = [

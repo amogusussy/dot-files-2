@@ -15,13 +15,12 @@ def get_weather(city: str) -> str:
     if current is None:
         return "None"
     temp_c = current[0]['FeelsLikeC']
-    icon = current[0]['weatherIconUrl'][0]['value']
-    return f"{icon} {temp_c}°C"
+    return f"{temp_c}°C"
 
 
 weather_widget = widget.GenPollText(
-    func=lambda: get_weather("London"),
-    update_interval=5,
+    func=lambda: "{:>4}".format(get_weather("London")),
+    update_interval=5 * 60,
 )
 
 

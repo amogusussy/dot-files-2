@@ -98,9 +98,10 @@ reverse-output() {
     printf "Audio already reversed\n"
     return
   fi
-  sink_number="$(pactl list short sinks | grep "RUNNING" | awk '{print $1}')"
+  # sink_number="$(pactl list short sinks | grep "RUNNING" | awk '{print $1}')"
+  sink_number="$(pactl list short sinks | grep "analog-stereo" | awk '{print $1}')"
 
-  $output="$(pactl load-module module-remap-sink sink_name='reverse-stereo' master=$sink_number channels=2 master_channel_map=front-right,front-left channel_map=front-left,front-right)"
+  output="$(pactl load-module module-remap-sink sink_name='reverse-stereo' master=$sink_number channels=2 master_channel_map=front-right,front-left channel_map=front-left,front-right)"
 
   if [[ "$?" == "0" ]]; then
     pactl set-default-sink "reverse-stereo"
@@ -219,6 +220,10 @@ mpv() {
   /bin/mpv "${replaced_args[@]}"
 }
 
+movie() {
+  mpv --wid=$(xdotool getactivewindow) "$1"
+}
+
 scrot() {
   /bin/scrot -F ~/Pictures/screenshots/$(date "+%s").png $@
 }
@@ -239,3 +244,5 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$HOME/.dotnet:$PATH
 export PATH=$PATH:"$HOME/.dotnet/tools"
+
+export PATH=$PATH:/home/matthew/.spicetify

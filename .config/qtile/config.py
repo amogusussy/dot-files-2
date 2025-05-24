@@ -44,11 +44,10 @@ def BAR():
         widget.Clock(format="󱑆 %H:%M |  %G %-e %b"),
         widget.Spacer(),
         weather.weather_widget,
-        BAR_PAD,
-        volume.volume_widget,
+        # volume.volume_widget,
         BAR_PAD,
         widget.CPU(
-            format="CPU {load_percent}%",
+            format="CPU{load_percent:>5}%",
         ),
         BAR_PAD,
         widget.Memory(
@@ -100,6 +99,12 @@ layouts = [layout.Columns(
     border_on_single=True,
     margin=[MARGIN_DEFAULT] * 4
 )]
+
+@hook.subscribe.client_new
+def no_border_for_librewolf(window):
+    if "LibreWolf" in window.window.get_wm_class():
+        window.border_width = 0
+        window.border_color = "#ffffff"
 
 widget_defaults = {
     "font": "JetBrains Mono",

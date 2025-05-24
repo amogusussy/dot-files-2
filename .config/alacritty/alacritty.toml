@@ -1,4 +1,11 @@
 [cursor.style]
+# shape = "Block"
+shape = "Beam"
+blinking = "On"
+[cursor]
+thickness = 0.2
+
+[cursor.vi_mode_style]
 shape = "Block"
 
 [font]
@@ -24,8 +31,8 @@ key = "F11"
 history = 100000
 
 [window.padding]
-x = 8
-y = 5
+x = 15
+y = 10
 
 [window]
 dynamic_title = false

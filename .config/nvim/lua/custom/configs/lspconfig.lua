@@ -5,7 +5,7 @@ local capabilities = plugins_lspconfig.capabilities
 local lspconfig = require("lspconfig")
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "unocss", "emmet_ls", "bashls", "denols", "digestif" }
+local servers = { "unocss", "emmet_ls", "bashls", "digestif", "denols" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -15,16 +15,16 @@ for _, lsp in ipairs(servers) do
 end
 
 
--- lspconfig.pylint = {
---   default_config = {
---     cmd = { 'pylint' },
---     filetypes = { 'python' },
---     init_options = {
---       command = { 'pylint', 'run', '--output-format', 'json',  },
---       ignore={ "E501" },
---     },
---   },
--- }
+lspconfig.pylint = {
+  default_config = {
+    cmd = { 'pylint' },
+    filetypes = { 'python' },
+    init_options = {
+      command = { 'pylint', 'run', '--output-format', 'json',  },
+      ignore={ "E501" },
+    },
+  },
+}
 
 
 lspconfig.pyright.setup {
