@@ -1,9 +1,6 @@
 [cursor.style]
 # shape = "Block"
-shape = "Beam"
-blinking = "On"
-[cursor]
-thickness = 0.2
+shape = "Block"
 
 [cursor.vi_mode_style]
 shape = "Block"

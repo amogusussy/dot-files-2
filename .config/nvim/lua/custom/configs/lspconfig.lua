@@ -5,7 +5,7 @@ local capabilities = plugins_lspconfig.capabilities
 local lspconfig = require("lspconfig")
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "unocss", "emmet_ls", "bashls", "digestif", "denols" }
+local servers = { "unocss", "emmet_ls", "bashls", "digestif", "ts_ls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -14,6 +14,23 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+
+lspconfig.ts_ls = {
+  init_options = {
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+        languages = {"javascript", "typescript", "vue"},
+      },
+    },
+  },
+  filetypes = {
+    "javascript",
+    "typescript",
+    "vue",
+  },
+}
 
 lspconfig.pylint = {
   default_config = {
