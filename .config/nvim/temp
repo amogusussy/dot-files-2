@@ -1,0 +1,9 @@
+lua/plugins/init.lua:      require("core.utils").lazy_load "nvim-lspconfig"
+lua/plugins/init.lua:      require "plugins.configs.lspconfig"
+lua/custom/plugins.lua:      require "plugins.configs.lspconfig"
+lua/custom/plugins.lua:      require "custom.configs.lspconfig"
+lua/custom/configs/lspconfig.lua:local plugins_lspconfig = require("plugins.configs.lspconfig")
+lua/custom/configs/lspconfig.lua:        or require('lspconfig.util').find_git_ancestor(fname)
+lua/custom/configs/lspconfig.lua:        or require('lspconfig.util').find_python_project_root(fname)
+lua/custom/configs/lspconfig.lua:--   root_dir = require("lspconfig.util").find_git_ancestor,
+lua/custom/configs/lspconfig.lua:-- require'lspconfig'.tinymist.setup{

@@ -1,7 +1,6 @@
 -- All plugins have lazy=true by default, to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -166,6 +165,9 @@ local default_plugins = {
     event = "InsertEnter",
     dependencies = {
       {
+        "f3fora/cmp-spell"
+      },
+      {
         -- snippet plugin
         "L3MON4D3/LuaSnip",
         dependencies = "rafamadriz/friendly-snippets",
@@ -193,6 +195,7 @@ local default_plugins = {
 
       -- cmp sources plugins
       {
+        "f3fora/cmp-spell",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
@@ -263,6 +266,15 @@ local default_plugins = {
       end
     end,
   },
+  -- {
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  --   ---@module 'render-markdown'
+  --   ---@type render.md.UserConfig
+  --   opts = {},
+  -- },
 
   -- -- Only load whichkey after all the gui
   -- {

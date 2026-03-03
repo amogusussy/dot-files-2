@@ -114,6 +114,7 @@ local options = {
     }),
   },
   sources = {
+    { name = "spell" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },

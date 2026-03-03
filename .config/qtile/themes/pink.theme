@@ -1,0 +1,8 @@
+bar_bg: #d3a2ad
+bar_fg: #1e1908
+border: #bf575d
+workspace_norm: #fceadc
+workspace_active: #1e1908
+focused: #e08ebf 
+unfocused: #fceadc
+pink:  #e7b2d7

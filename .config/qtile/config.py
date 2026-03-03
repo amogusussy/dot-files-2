@@ -1,14 +1,13 @@
+import subprocess
 from libqtile.config import Group, Match, Screen
 from libqtile.config import EzKey as Key
 from libqtile.lazy import lazy
 from libqtile import layout, hook, bar, widget
-import subprocess
-
 from groupbox_2 import GroupBox2
 import keys
 import global_variables as G
 import theme
-from widgets import weather, volume
+from widgets import weather
 
 cursor_wrap = True
 BORDER_WIDTH = 2
@@ -20,6 +19,10 @@ BAR_PAD = widget.TextBox()
 
 mouse = keys.MOUSE
 keys = keys.KEYS
+
+CPU_WIDGET = widget.CPU(
+    format="CPU{load_percent:>5}%",
+)
 
 
 def BAR():
@@ -46,9 +49,7 @@ def BAR():
         weather.weather_widget,
         # volume.volume_widget,
         BAR_PAD,
-        widget.CPU(
-            format="CPU{load_percent:>5}%",
-        ),
+        CPU_WIDGET,
         BAR_PAD,
         widget.Memory(
             format=" {MemUsed:.01f} GB",
@@ -61,7 +62,7 @@ def BAR():
         border_width=[0, 0, 0, 0],
         background=COLORS.bar_bg,
         foreground=COLORS.bar_fg,
-        margin=[2, 4, 0, 4]
+        margin=[0, 0, 0, 0]
     )
 
 
@@ -79,9 +80,15 @@ screens = [
 ]
 
 # Run ~/.config/qtile/autostart.sh on startup
-hook.subscribe.startup_once(lambda: subprocess.run(
-    G.HOME_DIR + "/.config/qtile/autostart.sh"
-))
+@hook.subscribe.startup_once
+def startup():
+    subprocess.run(
+        G.HOME_DIR + "/.config/qtile/autostart.sh",
+        check=False
+    )
+    for screen in screens:
+        screen.top.window.window.set_property("QTILE_BAR", 1, "CARDINAL", 32)
+
 
 
 # groups = [Group(str(i), label="") for i in range(1, DESKTOPS + 1)]
@@ -126,6 +133,5 @@ floating_layout = layout.Floating(
     ]
 )
 
-cursor_wrap = True
 # Fix broken Java applications
 wmname = "LG3D"

@@ -23,6 +23,9 @@ require "plugins"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 99
 
 
 require'treesitter-context'.setup{
@@ -40,3 +43,13 @@ require'treesitter-context'.setup{
   zindex = 20, -- The Z-index of the context window
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
+
+-- In your init.lua or plugin config
+local original_notify = vim.notify
+
+vim.notify = function(msg, level, opts)
+  if type(msg) == "string" and msg:match("nvim.treesitter") then
+    return  -- suppress it
+  end
+  original_notify(msg, level, opts)
+end

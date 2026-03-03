@@ -22,7 +22,7 @@ alias ':q'='exit'
 alias ':q!'='exit'
 alias qq='exit'
 alias python='python3'
-alias grep='grep --color=auto'
+alias grep='grep -I --color=auto'
 alias fdd=fd
 alias wc-l='wc -l'
 alias yt-dlp="yt-dlp --config-locations $HOME/.config/yt-dlp/yt-dlp.conf"
@@ -84,7 +84,6 @@ complete -cf torsocks
 complete -cf type
 complete -d cd
 # source /usr/share/bash-completion/completions/git
-
 
 shred_dir() {
   for i in "$@"

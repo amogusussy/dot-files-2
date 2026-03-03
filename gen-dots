@@ -5,7 +5,7 @@ if [ ! -d ".git/" ]; then
   exit 1
 fi
 
-config_files=("alacritty" "gallery-dl" "mpv" "nvim" "picom" "qtile" "ranger" "rofi" "yt-dlp" "zathura" "dunst")
+config_files=("alacritty" "gallery-dl" "mpv" "nvim" "picom" "qtile" "ranger" "rofi" "yt-dlp" "zathura")
 
 
 for i in "${config_files[@]}"
@@ -16,10 +16,10 @@ done
 
 cp $HOME/.bashrc .
 cp $HOME/.xinitrc .
+cp $HOME/.zshrc .
 
 cp -r $HOME/Pictures/Wallpapers/* ./Pictures/Wallpapers/
 
 git add .
 git commit -m "update dots"
 git push origin main
-

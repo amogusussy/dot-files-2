@@ -1,0 +1,27 @@
+general.import = [
+    "~/.config/alacritty/alacritty.toml"
+]
+
+[colors.primary]
+background = '#ffdaed'
+foreground = '#e664ae'
+
+[colors.normal]
+black   = '#ffdaed'
+red     = '#ea6ea4'
+green   = '#8ade01'
+yellow  = '#ffcb52'
+blue    = '#2b9cd9'
+magenta = '#f896c8'
+cyan    = '#70e6fd'
+white   = '#e664ae'
+
+[colors.bright]
+black   = '#ffdaed'
+red     = '#ea6ea4'
+green   = '#8ade01'
+yellow  = '#ffcb52'
+blue    = '#2b9cd9'
+magenta = '#f896c8'
+cyan    = '#70e6fd'
+white   = '#e664ae'

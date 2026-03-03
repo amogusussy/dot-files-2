@@ -41,11 +41,7 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-
-require("lspconfig").lua_ls.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       diagnostics = {
@@ -63,6 +59,10 @@ require("lspconfig").lua_ls.setup {
       },
     },
   },
-}
+
+})
+
+vim.lsp.enable({"lua_ls"})
+
 
 return M

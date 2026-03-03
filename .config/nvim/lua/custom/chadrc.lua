@@ -8,7 +8,7 @@ local highlights = require "custom.highlights"
 
 M.ui = {
   theme = "tokyonight",
-  theme_toggle = { "tokyonight", "one_light" },
+  theme_toggle = { "tokyonight", "tokyonight" },
 
   cmp = {
     icons = true,

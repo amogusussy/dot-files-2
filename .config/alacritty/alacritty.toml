@@ -8,6 +8,10 @@ shape = "Block"
 [font]
 size = 10.0
 
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
 [font.bold]
 family = "JetBrains Mono"
 style = "Bold"
@@ -15,10 +19,6 @@ style = "Bold"
 [font.italic]
 family = "JetBrains Mono"
 style = "Italic"
-
-[font.normal]
-family = "JetBrains Mono"
-style = "Regular"
 
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
